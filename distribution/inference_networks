@@ -1,0 +1,28 @@
+import torch
+from pixyz.distributions import Deterministic
+
+class inference_network(Deterministic):
+    def __init__(self):
+        super(self).__init__(name="q",cond_var=["x"], var=["h"])
+        #self.rnn = nn.GRU(
+        #    input_size=obs_dim,
+        ##    hidden_size=rnn_dim, 
+        #    bidirectional=False,
+        #)
+        #self.h0 = nn.Parameter(torch.zeros(2, 1, self.rnn.hidden_size))
+        #self.hidden_size = self.rnn.hidden_size
+        
+    def forward(self, x):
+        h0 = self.h0.expand(2, x.size(1), self.rnn.hidden_size).contiguous()
+        h, _ = self.rnn(x, h0)
+        return {"h": h}
+
+class MeanField_Left(inference_network):
+    #TODO
+    def __init__(self):
+        super().__init__()
+
+class Structured(inference_network):
+    #TODO
+    def __init__(self):
+        super().__init__()

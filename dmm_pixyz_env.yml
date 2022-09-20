@@ -1,0 +1,7 @@
+name:dmm_pixyz_env
+dependencies:
+- python=3.7.7
+- pytorch=1.6.0
+- torchvision=0.7.0
+- pip
+  - pixyz=0.3.3
